@@ -68,7 +68,7 @@ python migrate.py
 6️⃣ Start the Server
 python app.py
 
-code:
+Code:
 import java.time.LocalDate;
 private final String isbn;
 private final LocalDate borrowDate;
