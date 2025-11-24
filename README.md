@@ -24,19 +24,116 @@ The system requires users to run the following command to install all necessary 
 
 The system requires users to execute the application through the command python app.py. Users can access the system through their web browser by entering http://localhost:5000 into the address bar.
 
+⚙️ Setup Instructions
+
+1️⃣ Prerequisites
+
+Ensure you have installed:
+
+Python 3.9+
+
+pip
+
+MySQL / MongoDB
+
+Git
+
+2️⃣ Clone the Repository
+git clone https://github.com/your-username/Virtual-Smart-Library-System-VSLS.git
+cd Virtual-Smart-Library-System-VSLS
+
+3️⃣ Install Dependencies
+pip install -r requirements.txt
+
+4️⃣ Configure the Database
+Example MySQL Setup:
+CREATE DATABASE vsls;
+
+
+Update your database config in:
+
+app/config.py
+
+
+Sample:
+
+DB_HOST = "localhost"
+DB_USER = "root"
+DB_PASS = "password"
+DB_NAME = "vsls"
+
+5️⃣ Run Database Migrations (if provided)
+python migrate.py
+
+6️⃣ Start the Server
+python app.py
+
+code:
+import java.time.LocalDate;
+private final String isbn;
+private final LocalDate borrowDate;
+private LocalDate dueDate;
+private LocalDate returnDate;
+
+
+public BorrowRecord(String recordId, String memberId, String isbn, LocalDate borrowDate, LocalDate dueDate) {
+this.recordId = recordId;
+this.memberId = memberId;
+this.isbn = isbn;
+this.borrowDate = borrowDate;
+this.dueDate = dueDate;
+}
+
+
+public String getRecordId() { return recordId; }
+public String getMemberId() { return memberId; }
+public String getIsbn() { return isbn; }
+public LocalDate getBorrowDate() { return borrowDate; }
+public LocalDate getDueDate() { return dueDate; }
+public LocalDate getReturnDate() { return returnDate; }
+
+
+public boolean isReturned() { return returnDate != null; }
+
+
+public void markReturned(LocalDate date) {
+this.returnDate = date;
+}
+
+
+public boolean isOverdue() {
+return !isReturned() && LocalDate.now().isAfter(dueDate);
+}
+
+
+@Override
+public String toString() {
+return String.format("Record[%s] Member:%s ISBN:%s Borrowed:%s Due:%s Returned:%s",
+recordId, memberId, isbn, borrowDate, dueDate, returnDate == null ? "(not yet)" : returnDate.toString());
+}
+}
+
+
+Open in browser:
+
+http://localhost:5000
+
 🧪 Testing
 
-The system includes test functions which users can execute through pytest. Users can perform manual testing of the system through the following steps:
+Run unit tests:
 
-User login
+pytest
 
-Book search
 
-Borrow/return operations
+Tests include:
 
-Recommendations
+Login validation
 
-Admin book management
+Book CRUD tests
+
+Borrow/return flow
+
+Search engine tests
 
 📂 Project Structure
 VSLS/
